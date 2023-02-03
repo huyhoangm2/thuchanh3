@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import {useState} from'react';
 import './App.css';
 
-function App() {
+const DemoComponent = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <div>Đây là tuổi:{props.age}</div>
+    <div>Đây là tên :{props.displayName}</div>
+    </div>
+  );
+};
+function App() {
+  const [age, setAge] = useState(0);
+  const [name,setName]= useState('Cee');
+
+  const onIncreaseAge = () => {
+    setAge(age+1);
+  }
+  return (
+    <div className='container'>
+      <div>{age}</div>
+      <div onClick={onIncreaseAge}>Tăng age lên 1</div>
+      <DemoComponent age={age} displayName={name}/>
     </div>
   );
 }
